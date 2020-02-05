@@ -10,6 +10,14 @@ cmake_minimum_required(VERSION 3.4.1)
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
+# sdkbox
+add_definitions(-DSDKBOX_ENABLED)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/jni/PluginAdMob/)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/jni/sdkbox/)
+
+#target_link_libraries(${APP_NAME} ext_PluginAdMob)
+#target_link_libraries(${APP_NAME} ext_sdkbox)
+
 add_library( # Sets the name of the library.
         native-lib
 
@@ -41,4 +49,10 @@ target_link_libraries( # Specifies the target library.
 
         # Links the target library to the log library
         # included in the NDK.
-        ${log-lib})
+        ${log-lib}
+
+        ext_PluginAdMob
+        ext_sdkbox
+
+
+        )
